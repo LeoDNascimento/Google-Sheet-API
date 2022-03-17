@@ -38,6 +38,8 @@ def main():
         with open('token.json', 'w') as token:
             token.write(creds.to_json())
 
+
+
     try:
         service = build('sheets', 'v4', credentials=creds)
 
@@ -46,14 +48,26 @@ def main():
         result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,
                                     range='Página1!A1:D5').execute()
         values = result.get('values', [])
-        print(values)
-
         if not values:
             print('No data found.')
             return
-
     except HttpError as err:
         print(err)
+    
+    #Writing
+    values = [
+    [
+        # Cell values ...
+    ],
+    
+    ]
+    body = {
+        'values': values
+    }
+    result = service.spreadsheets().values().update(
+        spreadsheetId=SAMPLE_SPREADSHEET_ID, range='Página1!A1:D5',
+        valueInputOption=value_input_option, body=body).execute()
+    print('{0} cells updated.'.format(result.get('updatedCells')))
 
 
 if __name__ == '__main__':
