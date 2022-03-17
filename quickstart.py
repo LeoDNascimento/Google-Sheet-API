@@ -55,19 +55,19 @@ def main():
         print(err)
     
     #Writing
-    values = [
-    [
-        # Cell values ...
-    ],
+    # values = [
+    # [
+    #     # Cell values ...
+    # ],
     
-    ]
-    body = {
-        'values': values
-    }
-    result = service.spreadsheets().values().update(
-        spreadsheetId=SAMPLE_SPREADSHEET_ID, range='Página1!A1:D5',
-        valueInputOption=value_input_option, body=body).execute()
-    print('{0} cells updated.'.format(result.get('updatedCells')))
+    # ]
+    # body = {
+    #     'values': values
+    # }
+    # result = service.spreadsheets().values().update(
+    #     spreadsheetId=SAMPLE_SPREADSHEET_ID, range='Página1!A1:D5',
+    #     valueInputOption=value_input_option, body=body).execute()
+    # print('{0} cells updated.'.format(result.get('updatedCells')))
 
 
 if __name__ == '__main__':
